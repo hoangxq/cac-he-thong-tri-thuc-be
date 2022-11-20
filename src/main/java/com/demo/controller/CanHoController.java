@@ -20,9 +20,14 @@ public class CanHoController {
     private final CanHoService canHoService;
     private final ModelMapper modelMapper;
 
+//    @GetMapping
+//    public ResponseEntity<?> getAllCanHo (@Validated PagingReq pagingReq){
+//        return ResponseEntity.ok(PagingRes.of(canHoService.getAllCanHo(pagingReq)));
+//    }
+
     @GetMapping
-    public ResponseEntity<?> getAllCanHo (@Validated PagingReq pagingReq){
-        return ResponseEntity.ok(PagingRes.of(canHoService.getAllCanHo(pagingReq)));
+    public ResponseEntity<?> getAllCanHo (){
+        return ResponseEntity.ok(canHoService.getAllCanHo());
     }
 
     @GetMapping("/{id}")
@@ -42,6 +47,6 @@ public class CanHoController {
 
     @PostMapping
     public ResponseEntity<?> handleDataAndCreateCanHo (@RequestBody CanHoRequest canHoRequest){
-        return null;
+        return ResponseEntity.ok(canHoService.handleDataAndCreateCanHo(canHoRequest));
     }
 }
